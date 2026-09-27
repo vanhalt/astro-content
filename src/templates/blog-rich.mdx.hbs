@@ -1,0 +1,35 @@
+---
+title: {{{yq title}}}
+description: {{{yq description}}}
+pubDate: {{date}}
+author: {{{yq author}}}
+tags: [{{{tagsInline}}}]
+draft: {{draftYaml}}
+heroImage: "./cover.png"
+---
+
+import Callout from "../../components/Callout.astro";
+
+# {{title}}
+
+> {{description}}
+
+![Cover image for {{title}}](./cover.png)
+
+{{body}}
+
+## Details
+
+<Callout>
+This section was scaffolded by `astro-content` using the `blog-rich` template.
+</Callout>
+
+```js
+console.log("hello from {{slug}}");
+```
+
+## Related
+
+{{#each tags}}
+- Posts tagged `{{this}}`
+{{/each}}

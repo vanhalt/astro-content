@@ -1,0 +1,45 @@
+---
+title: {{{yq title}}}
+description: {{{yq description}}}
+pubDate: {{date}}
+author: {{{yq author}}}
+tags: [{{{tagsInline}}}]
+draft: {{draftYaml}}
+level: "beginner"
+---
+
+import Callout from "../../components/Callout.astro";
+import Steps from "../../components/Steps.astro";
+
+# {{title}}
+
+> {{description}}
+
+{{body}}
+
+## What you will learn
+
+- The basics behind {{title}}.
+- How to apply it in the `{{collection}}` collection.
+
+<Callout>
+This page was scaffolded by `astro-content` using the custom `tutorial` template.
+</Callout>
+
+<Steps>
+
+1. Read the overview below.
+2. Follow along in your own project.
+3. Adapt the snippet for `{{slug}}`.
+
+</Steps>
+
+```js
+console.log("tutorial: {{slug}}");
+```
+
+## Related
+
+{{#each tags}}
+- More on `{{this}}`
+{{/each}}

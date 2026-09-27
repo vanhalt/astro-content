@@ -1,0 +1,34 @@
+---
+title: {{{yq title}}}
+description: {{{yq description}}}
+pubDate: {{date}}
+author: {{{yq author}}}
+tags: [{{{tagsInline}}}]
+draft: {{draftYaml}}
+prepTime: "30 min"
+cookTime: "45 min"
+servings: 4
+---
+
+# {{title}}
+
+> {{description}}
+
+{{body}}
+
+## Ingredients
+
+- 2 cups flour
+- 1 cup sugar
+- 3 eggs
+
+## Instructions
+
+1. Preheat the oven.
+2. Mix the ingredients for {{title}}.
+3. Bake and serve.
+
+## Notes
+
+- Filed under the `{{collection}}` collection.
+- Tags:{{#each tags}} `{{this}}`{{/each}}

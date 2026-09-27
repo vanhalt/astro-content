@@ -1,0 +1,47 @@
+{
+  "name": "astro-content",
+  "version": "0.0.1",
+  "description": "Generate content/posts/data with skeleton data for existing Astro projects",
+  "type": "module",
+  "packageManager": "pnpm@12.5.1",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "astro-content": "./bin/astro-content.js"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "completions"
+  ],
+  "scripts": {
+    "build": "tsup && rm -rf dist/templates && cp -r src/templates dist/templates",
+    "test:e2e": "vitest run",
+    "dev": "tsup --watch",
+    "prepublishOnly": "pnpm build && pnpm test:e2e",
+    "release": "pnpm publish --access public",
+    "release:dry": "pnpm publish --dry-run"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "8.7.2",
+    "chalk": "6.0.0",
+    "commander": "15.0.0",
+    "date-fns": "4.4.0",
+    "globby": "16.2.4",
+    "gray-matter": "4.0.3",
+    "handlebars": "4.7.9",
+    "lorem-ipsum": "3.0.0",
+    "slugify": "1.6.9"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.3",
+    "astro": "7.3.5",
+    "tsup": "8.5.1",
+    "typescript": "5.9.3",
+    "vitest": "5.0.2"
+  }
+}
