@@ -30,7 +30,7 @@ describe('astro-content CLI (built dist)', () => {
   let project: string;
 
   beforeAll(() => {
-    expect(existsSync(CLI), `built CLI missing at ${CLI} — run pnpm build first`).toBe(true);
+    expect(existsSync(CLI), `built CLI missing at ${CLI} — run npm run build first`).toBe(true);
     project = makeProject();
   });
 

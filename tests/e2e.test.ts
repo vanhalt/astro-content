@@ -63,7 +63,7 @@ export const collections = { blog, docs };
 
 describe('stage 4 e2e (built dist)', () => {
   beforeAll(() => {
-    expect(existsSync(CLI), `built CLI missing at ${CLI} — run pnpm build first`).toBe(true);
+    expect(existsSync(CLI), `built CLI missing at ${CLI} — run npm run build first`).toBe(true);
   });
 
   it('MD generate honors flags (title/author/tags/description/draft/slug)', () => {
@@ -187,12 +187,12 @@ describe('stage 4 e2e (built dist)', () => {
     );
     expect(gen.status).toBe(0);
     try {
-      execFileSync('pnpm', ['--dir', TEST_APP, 'exec', 'astro', 'sync'], {
+      execFileSync('npm', ['--prefix', TEST_APP, 'exec', '--', 'astro', 'sync'], {
         encoding: 'utf8',
         stdio: ['ignore', 'pipe', 'pipe'],
         timeout: 180_000,
       });
-      execFileSync('pnpm', ['--dir', TEST_APP, 'exec', 'astro', 'build'], {
+      execFileSync('npm', ['--prefix', TEST_APP, 'exec', '--', 'astro', 'build'], {
         encoding: 'utf8',
         stdio: ['ignore', 'pipe', 'pipe'],
         timeout: 240_000,
