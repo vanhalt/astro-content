@@ -186,13 +186,19 @@ describe('stage 4 e2e (built dist)', () => {
       ROOT,
     );
     expect(gen.status).toBe(0);
+    // Start from a clean dist so a stale artifact can never mask a broken build.
+    rmSync(join(TEST_APP, 'dist'), { recursive: true, force: true });
     try {
+      // NOTE: npm --prefix does NOT change cwd (unlike pnpm --dir), so astro
+      // must be run with cwd: TEST_APP or it builds the wrong directory.
       execFileSync('npm', ['--prefix', TEST_APP, 'exec', '--', 'astro', 'sync'], {
+        cwd: TEST_APP,
         encoding: 'utf8',
         stdio: ['ignore', 'pipe', 'pipe'],
         timeout: 180_000,
       });
       execFileSync('npm', ['--prefix', TEST_APP, 'exec', '--', 'astro', 'build'], {
+        cwd: TEST_APP,
         encoding: 'utf8',
         stdio: ['ignore', 'pipe', 'pipe'],
         timeout: 240_000,
