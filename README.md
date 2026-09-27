@@ -5,7 +5,7 @@ data for existing Astro projects.
 
 ## Prerequisites
 
-- Node.js >= 20
+- Node.js >= 22.12.0 (required by Astro)
 - npm (ships with Node.js)
 
 ```sh
