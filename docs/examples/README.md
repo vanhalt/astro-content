@@ -14,7 +14,7 @@ Files:
 
 ## Option A: use directly by path (no install)
 
-```fish
+```sh
 # Preview without writing
 node ./bin/astro-content.js generate recipes "Pancakes" --template docs/examples/recipe.md.hbs --dry-run
 
@@ -22,8 +22,8 @@ node ./bin/astro-content.js generate recipes "Pancakes" --template docs/examples
 node ./bin/astro-content.js generate recipes "Pancakes" --template docs/examples/recipe.md.hbs --author Ada --tags breakfast,easy
 
 # From inside your Astro project, with the library installed
-pnpm exec astro-content generate tutorials "Hello MDX" --template ./docs/examples/tutorial.mdx.hbs --type mdx
-pnpm exec astro-content generate products "Gadget" --template ./docs/examples/product.json.hbs --type json
+npx astro-content generate tutorials "Hello MDX" --template ./docs/examples/tutorial.mdx.hbs --type mdx
+npx astro-content generate products "Gadget" --template ./docs/examples/product.json.hbs --type json
 ```
 
 ## Option B: install as a named custom template
@@ -33,10 +33,10 @@ Copy the file into `<root>/.astro-content/templates/` (or run
 The template name is the file name without the trailing format + `.hbs`
 (`recipe.md.hbs` → `recipe`).
 
-```fish
+```sh
 mkdir -p .astro-content/templates
 cp docs/examples/recipe.md.hbs .astro-content/templates/
-pnpm exec astro-content generate recipes "Pancakes" --template recipe
+npx astro-content generate recipes "Pancakes" --template recipe
 ```
 
 ## Template variables and helpers

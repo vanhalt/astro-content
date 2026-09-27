@@ -1,33 +1,30 @@
 # astro-content
 
 Generate content entries (posts, docs, changelog, data records) with skeleton
-data for existing Astro projects. Fish + pnpm + mise friendly.
+data for existing Astro projects.
 
 ## Prerequisites
 
-- [fish](https://fishshell.com/) shell
-- [mise](https://mise.jdx.dev/) (installs the pinned Node + pnpm)
-- [pnpm](https://pnpm.io/) (only supported package manager)
+- Node.js >= 20
+- npm (ships with Node.js)
 
-```fish
-mise --version
-fish --version
-pnpm --version
-mise install
+```sh
+node --version
+npm --version
 ```
 
 ## Installation
 
-```fish
-mise x -- pnpm install
-mise x -- pnpm build
-pnpm add astro-content
+```sh
+npm install
+npm run build
+npm install astro-content
 ```
 
 Run the CLI from source after building:
 
-```fish
-mise x -- pnpm build
+```sh
+npm run build
 node ./dist/cli/index.js --help
 ./bin/astro-content.js --help
 ```
@@ -37,7 +34,7 @@ node ./dist/cli/index.js --help
 Global flags (work on every command): `--root <dir>`, `--config <path>`,
 `--verbose`.
 
-```fish
+```sh
 # Scaffold a collection in the current project
 astro-content init blog --root ~/sites/my-blog
 
@@ -139,7 +136,7 @@ The integration logs the detected content collections during
 
 ## Custom templates
 
-```fish
+```sh
 astro-content add-template docs --root ~/sites/my-blog
 ```
 
@@ -149,27 +146,25 @@ available fields are `title`, `description`, `date`, `slug`, `author`, `tags`,
 `tagsInline`, `draft`, `draftYaml`, `body`, `year`, plus the `json` and `yq`
 helpers — then generate with `--template docs`.
 
-## Fish completions
+## Shell completions
 
-```fish
-cp completions/astro-content.fish ~/.config/fish/completions/
-```
+Fish completions ship with the package in `completions/astro-content.fish`.
 
 ## Development
 
-```fish
-mise x -- pnpm install
-mise x -- pnpm build
-mise x -- pnpm test:e2e
+```sh
+npm install
+npm run build
+npm run test:e2e
 ```
 
-`pnpm test:e2e` runs the reusable vitest suite (`tests/e2e.test.ts` plus
+`npm run test:e2e` runs the reusable vitest suite (`tests/e2e.test.ts` plus
 `tests/e2e/`). The suite generates entries into temp dirs, drives the
 programmatic API, and runs `astro sync` + `astro build` inside `test-app/`
 (a minimal Astro app with `blog` + `docs` collections, linked to the local
-library via the pnpm workspace). To run the Astro checks by hand:
+library via the npm workspace). To run the Astro checks by hand:
 
-```fish
-mise x -- pnpm --dir test-app exec astro sync
-mise x -- pnpm --dir test-app exec astro build
+```sh
+npm --prefix test-app exec -- astro sync
+npm --prefix test-app exec -- astro build
 ```

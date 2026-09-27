@@ -3,6 +3,21 @@
 All notable changes to `astro-content` are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [Unreleased]
+
+### Changed
+
+- Standard npm toolchain: removed `mise.toml`, `pnpm-workspace.yaml`, and
+  `pnpm-lock.yaml` in favor of plain npm (`npm install` / `npm run build` /
+  `npm run test:e2e`, `package-lock.json`, npm `workspaces` for `test-app`).
+- CI (`.github/workflows/build.yml`) now uses `actions/setup-node` with the
+  npm cache and `npm ci` instead of mise + pnpm. This also fixes the build
+  failure caused by passing `mise_toml: mise.toml` to `jdx/mise-action`,
+  which overwrote `mise.toml` with that literal string.
+- Release scripts use npm (`prepublishOnly`, `release`, `release:dry` via
+  `npm pack --dry-run`); README and `docs/examples` show standard `sh` +
+  npm/npx commands.
+
 ## [0.0.1] — Initial release
 
 First public release: a CLI plus programmatic API that generates

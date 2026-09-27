@@ -3,10 +3,12 @@
   "version": "0.0.1",
   "description": "Generate content/posts/data with skeleton data for existing Astro projects",
   "type": "module",
-  "packageManager": "pnpm@12.5.1",
   "engines": {
     "node": ">=20"
   },
+  "workspaces": [
+    "test-app"
+  ],
   "bin": {
     "astro-content": "./bin/astro-content.js"
   },
@@ -22,9 +24,9 @@
     "build": "tsup && rm -rf dist/templates && cp -r src/templates dist/templates",
     "test:e2e": "vitest run",
     "dev": "tsup --watch",
-    "prepublishOnly": "pnpm build && pnpm test:e2e",
-    "release": "pnpm publish --access public",
-    "release:dry": "pnpm publish --dry-run"
+    "prepublishOnly": "npm run build && npm run test:e2e",
+    "release": "npm publish --access public",
+    "release:dry": "npm pack --dry-run"
   },
   "dependencies": {
     "@inquirer/prompts": "8.7.2",

@@ -12,22 +12,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: jdx/mise-action@v2
+      - uses: actions/setup-node@v4
         with:
-          mise_toml: mise.toml
-
-      - uses: pnpm/action-setup@v4
-        with:
-          run_install: false
+          node-version: 20
+          cache: npm
 
       - name: Install dependencies
-        run: mise x -- pnpm install --frozen-lockfile
+        run: npm ci
 
       - name: Build library
-        run: mise x -- pnpm build
+        run: npm run build
 
       - name: Run e2e tests
-        run: mise x -- pnpm test:e2e
+        run: npm run test:e2e
 
       - name: Upload dist artifact
         uses: actions/upload-artifact@v4
